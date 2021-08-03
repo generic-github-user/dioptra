@@ -216,6 +216,7 @@ def init_train_flow() -> Flow:
                 dataset_seed=dataset_seed,
             ),
         )
+        
         optimizer = pyplugs.call_task(
             f"{_CUSTOM_PLUGINS_IMPORT_PATH}.evaluation",
             "tensorflow",
@@ -313,6 +314,7 @@ def init_train_flow() -> Flow:
             dataset=testing_ds,
             upstream_tasks=[history]
         )
+        
         log_classifier_performance_metrics_result = pyplugs.call_task(  # noqa: F841
             f"{_PLUGINS_IMPORT_PATH}.tracking",
             "mlflow",
