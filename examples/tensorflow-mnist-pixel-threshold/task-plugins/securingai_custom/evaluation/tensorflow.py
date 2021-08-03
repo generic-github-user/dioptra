@@ -1,15 +1,32 @@
+# This Software (Dioptra) is being made available as a public service by the
+# National Institute of Standards and Technology (NIST), an Agency of the United
+# States Department of Commerce. This software was developed in part by employees of
+# NIST and in part by NIST contractors. Copyright in portions of this software that
+# were developed by NIST contractors has been licensed or assigned to NIST. Pursuant
+# to Title 17 United States Code Section 105, works of NIST employees are not
+# subject to copyright protection in the United States. However, NIST may hold
+# international copyright in software created by its employees and domestic
+# copyright (or licensing rights) in portions of software that were assigned or
+# licensed to NIST. To the extent that NIST holds copyright in this software, it is
+# being made available under the Creative Commons Attribution 4.0 International
+# license (CC BY 4.0). The disclaimers of the CC BY 4.0 license apply to all parts
+# of the software developed or licensed by NIST.
+#
+# ACCESS THE FULL CC BY 4.0 LICENSE HERE:
+# https://creativecommons.org/licenses/by/4.0/legalcode
 from __future__ import annotations
 
 from types import FunctionType
 from typing import Any, Dict, List, Union
 
-import import_keras
 import structlog
-from prefect import task
 from structlog.stdlib import BoundLogger
 
+from mitre.securingai import pyplugs
 from mitre.securingai.sdk.exceptions import TensorflowDependencyError
 from mitre.securingai.sdk.utilities.decorators import require_package
+
+from . import import_keras
 
 LOGGER: BoundLogger = structlog.stdlib.get_logger()
 
@@ -25,20 +42,20 @@ except ImportError:  # pragma: nocover
     )
 
 
-@task
+@pyplugs.register
 @require_package("tensorflow", exc_type=TensorflowDependencyError)
 def evaluate_metrics_tensorflow(classifier, dataset) -> Dict[str, float]:
     result = classifier.evaluate(dataset, verbose=0)
     return dict(zip(classifier.metrics_names, result))
 
 
-@task
+@pyplugs.register
 @require_package("tensorflow", exc_type=TensorflowDependencyError)
 def get_optimizer(optimizer: str, learning_rate: float) -> Optimizer:
     return import_keras.get_optimizer(optimizer)(learning_rate)
 
 
-@task
+@pyplugs.register
 @require_package("tensorflow", exc_type=TensorflowDependencyError)
 def get_model_callbacks(callbacks_list: List[Dict[str, Any]]) -> List[Callback]:
     return [
@@ -47,7 +64,7 @@ def get_model_callbacks(callbacks_list: List[Dict[str, Any]]) -> List[Callback]:
     ]
 
 
-@task
+@pyplugs.register
 @require_package("tensorflow", exc_type=TensorflowDependencyError)
 def get_performance_metrics(
     metrics_list: List[Dict[str, Any]]

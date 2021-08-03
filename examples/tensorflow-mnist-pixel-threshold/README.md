@@ -1,6 +1,9 @@
-# Tensorflow MNIST Pixel Threshold Demo
+# Tensorflow MNIST Classifier demo
 
-The demo provided in the Jupyter notebook `demo.ipynb` uses Dioptra to run experiments that investigate the effects of the pixel threshold attack when launched on a neural network model trained on the MNIST dataset.
+![Testbed architecture diagram](securing_ai_lab_architecture.png)
+
+This demo provides a practical example that you can run on your personal computer to see how Dioptra can be used to run a simple experiment on the transferability of the fast gradient method (FGM) evasion attack between two neural network architectures.
+It can be used as a basic template for crafting your own custom scripts to run within the testbed.
 
 ## Getting started
 

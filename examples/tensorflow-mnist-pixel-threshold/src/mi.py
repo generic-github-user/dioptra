@@ -1,20 +1,4 @@
 #!/usr/bin/env python
-# This Software (Dioptra) is being made available as a public service by the
-# National Institute of Standards and Technology (NIST), an Agency of the United
-# States Department of Commerce. This software was developed in part by employees of
-# NIST and in part by NIST contractors. Copyright in portions of this software that
-# were developed by NIST contractors has been licensed or assigned to NIST. Pursuant
-# to Title 17 United States Code Section 105, works of NIST employees are not
-# subject to copyright protection in the United States. However, NIST may hold
-# international copyright in software created by its employees and domestic
-# copyright (or licensing rights) in portions of software that were assigned or
-# licensed to NIST. To the extent that NIST holds copyright in this software, it is
-# being made available under the Creative Commons Attribution 4.0 International
-# license (CC BY 4.0). The disclaimers of the CC BY 4.0 license apply to all parts
-# of the software developed or licensed by NIST.
-#
-# ACCESS THE FULL CC BY 4.0 LICENSE HERE:
-# https://creativecommons.org/licenses/by/4.0/legalcode
 
 import os
 from pathlib import Path
@@ -24,7 +8,6 @@ import click
 import mlflow
 import numpy as np
 import structlog
-from pixelthreshold import create_pt_dataset
 from prefect import Flow, Parameter
 from prefect.utilities.logging import get_logger as get_prefect_logger
 from structlog.stdlib import BoundLogger
@@ -41,16 +24,7 @@ from mitre.securingai.sdk.utilities.logging import (
 )
 
 _PLUGINS_IMPORT_PATH: str = "securingai_builtins"
-DISTANCE_METRICS: List[Dict[str, str]] = [
-    {"name": "l_infinity_norm", "func": "l_inf_norm"},
-    {"name": "l_1_norm", "func": "l_1_norm"},
-    {"name": "l_2_norm", "func": "l_2_norm"},
-    {"name": "cosine_similarity", "func": "paired_cosine_similarities"},
-    {"name": "euclidean_distance", "func": "paired_euclidean_distances"},
-    {"name": "manhattan_distance", "func": "paired_manhattan_distances"},
-    {"name": "wasserstein_distance", "func": "paired_wasserstein_distances"},
-]
-
+_CUSTOM_PLUGINS_IMPORT_PATH: str = "securingai_custom"
 
 LOGGER: BoundLogger = structlog.stdlib.get_logger()
 
@@ -87,14 +61,14 @@ def _coerce_int_to_bool(ctx, param, value):
 @click.option(
     "--adv-tar-name",
     type=click.STRING,
-    default="testing_adversarial_pt.tar.gz",
-    help="Name to give to tarfile artifact containing pixel threshold images",
+    default="testing_adversarial_mi.tar.gz",
+    help="Name to give to tarfile artifact containing model inversion predictions",
 )
 @click.option(
     "--adv-data-dir",
     type=click.STRING,
     default="adv_testing",
-    help="Directory for saving pixel threshold images",
+    help="Directory for saving model inversion predictions",
 )
 @click.option(
     "--model-name",
@@ -113,16 +87,34 @@ def _coerce_int_to_bool(ctx, param, value):
     default=32,
 )
 @click.option(
-    "--th",
+    "--classes",
     type=click.INT,
-    help="Pixel Threshold Attack threshold value",
-    default=1,
+    help="Model Inversion Number of Classes",
+    default=10,
 )
 @click.option(
-    "--es",
+    "--max-iter",
     type=click.INT,
-    help="Pixel Threshold Attack Evolution Strategy",
-    default=0,
+    help="Model Inversion Max Iterations",
+    default=10000,
+)
+@click.option(
+    "--window-length",
+    type=click.INT,
+    help="Model Inversion Window Length",
+    default=100,
+)
+@click.option(
+    "--threshold",
+    type=click.FLOAT,
+    help="Model Inversion Threshold",
+    default=0.99,
+)
+@click.option(
+    "--learning-rate",
+    type=click.FLOAT,
+    help="Model Inversion Learning Rate",
+    default=0.1,
 )
 @click.option(
     "--seed",
@@ -130,7 +122,8 @@ def _coerce_int_to_bool(ctx, param, value):
     help="Set the entry point rng seed",
     default=-1,
 )
-def pt_attack(
+
+def mi_attack(
     data_dir,
     image_size,
     adv_tar_name,
@@ -138,13 +131,16 @@ def pt_attack(
     model_name,
     model_version,
     batch_size,
-    th,
-    es,
-    seed,
+    classes,
+    max_iter,
+    window_length,
+    threshold,
+    learning_rate,
+    seed
 ):
     LOGGER.info(
         "Execute MLFlow entry point",
-        entry_point="pt",
+        entry_point="mi",
         data_dir=data_dir,
         image_size=image_size,
         adv_tar_name=adv_tar_name,
@@ -152,57 +148,66 @@ def pt_attack(
         model_name=model_name,
         model_version=model_version,
         batch_size=batch_size,
-        th=th,
-        es=es,
-        seed=seed,
+        classes=classes,
+        max_iter=max_iter,
+        window_length=window_length,
+        threshold=threshold,
+        learning_rate=learning_rate,
+        seed=seed
     )
 
     with mlflow.start_run() as active_run:  # noqa: F841
-        flow: Flow = init_pt_flow()
+        flow: Flow = init_mi_flow()
         state = flow.run(
             parameters=dict(
                 testing_dir=Path(data_dir) / "testing",
                 image_size=image_size,
                 adv_tar_name=adv_tar_name,
                 adv_data_dir=(Path.cwd() / adv_data_dir).resolve(),
-                distance_metrics_filename="distance_metrics.csv",
                 model_name=model_name,
                 model_version=model_version,
                 batch_size=batch_size,
-                th=th,
-                es=es,
-                seed=seed,
+                classes=classes,
+                max_iter=max_iter,
+                window_length=window_length,
+                threshold=threshold,
+                learning_rate=learning_rate,
+                seed=seed
             )
         )
 
     return state
 
 
-def init_pt_flow() -> Flow:
-    with Flow("Pixel Threshold") as flow:
+def init_mi_flow() -> Flow:
+    with Flow("Model Inversion") as flow:
         (
             testing_dir,
             image_size,
             adv_tar_name,
             adv_data_dir,
-            distance_metrics_filename,
             model_name,
             model_version,
             batch_size,
-            th,
-            es,
+            classes,
+            max_iter,
+            window_length,
+            threshold,
+            learning_rate,
             seed,
         ) = (
             Parameter("testing_dir"),
             Parameter("image_size"),
             Parameter("adv_tar_name"),
             Parameter("adv_data_dir"),
-            Parameter("distance_metrics_filename"),
             Parameter("model_name"),
             Parameter("model_version"),
             Parameter("batch_size"),
-            Parameter("th"),
-            Parameter("es"),
+            Parameter("classes"),
+            Parameter("max_iter"),
+            Parameter("window_length"),
+            Parameter("threshold"),
+            Parameter("learning_rate"),
             Parameter("seed"),
         )
         seed, rng = pyplugs.call_task(
@@ -245,55 +250,30 @@ def init_pt_flow() -> Flow:
             version=model_version,
             upstream_tasks=[init_tensorflow_results],
         )
-        distance_metrics_list = pyplugs.call_task(
-            f"{_PLUGINS_IMPORT_PATH}.metrics",
-            "distance",
-            "get_distance_metric_list",
-            request=DISTANCE_METRICS,
-        )
-        ##        distance_metrics = pyplugs.call_task(
-        ##            f"{_PLUGINS_IMPORT_PATH}.attacks",
-        ##            "pixelthreshold",
-        ##            "create_pt_dataset",
-        ##            data_dir=testing_dir,
-        ##            keras_classifier=keras_classifier,
-        ##            distance_metrics_list=distance_metrics_list,
-        ##            adv_data_dir=adv_data_dir,
-        ##            batch_size=batch_size,
-        ##            image_size=image_size,
-        ##            th=th,
-        ##            es=es,
-        ##            upstream_tasks=[make_directories_results],
-        ##        )
-
-        distance_metrics = create_pt_dataset(
+        inferred = pyplugs.call_task(
+            f"{_CUSTOM_PLUGINS_IMPORT_PATH}.evaluation",
+            "modelinversion",
+            "infer_model_inversion",
             data_dir=testing_dir,
             keras_classifier=keras_classifier,
-            distance_metrics_list=distance_metrics_list,
             adv_data_dir=adv_data_dir,
             batch_size=batch_size,
             image_size=image_size,
-            th=th,
-            es=es,
+            classes=classes,
+            max_iter=max_iter,
+            window_length=window_length,
+            threshold=threshold,
+            learning_rate=learning_rate,
             upstream_tasks=[make_directories_results],
         )
-
+        
         log_evasion_dataset_result = pyplugs.call_task(  # noqa: F841
             f"{_PLUGINS_IMPORT_PATH}.artifacts",
             "mlflow",
             "upload_directory_as_tarball_artifact",
             source_dir=adv_data_dir,
             tarball_filename=adv_tar_name,
-            upstream_tasks=[distance_metrics],
-        )
-        log_distance_metrics_result = pyplugs.call_task(  # noqa: F841
-            f"{_PLUGINS_IMPORT_PATH}.artifacts",
-            "mlflow",
-            "upload_data_frame_artifact",
-            data_frame=distance_metrics,
-            file_name=distance_metrics_filename,
-            file_format="csv.gz",
-            file_format_kwargs=dict(index=False),
+            upstream_tasks=[inferred],
         )
 
     return flow
@@ -309,4 +289,4 @@ if __name__ == "__main__":
     configure_structlog()
 
     with plugin_dirs(), StdoutLogStream(as_json), StderrLogStream(as_json):
-        _ = pt_attack()
+        _ = mi_attack()
