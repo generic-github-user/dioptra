@@ -44,8 +44,8 @@ CHOWN_PERM =
 endif
 
 EXAMPLE_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-EXAMPLE_NAME = tensorflow-mnist-classifier
-EXAMPLE_CONDA_ENV_NAME = tensorflow-mnist-classifier
+EXAMPLE_NAME = mnist-pixel-threshold
+EXAMPLE_CONDA_ENV_NAME = mnist-pixel-threshold
 EXAMPLE_CUSTOM_PLUGINS_DIR = task-plugins
 EXAMPLE_DATA_DIR = data
 EXAMPLE_JUPYTER_DIR = jupyter
