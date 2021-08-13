@@ -186,7 +186,7 @@ RUN echo "===> Installing PyTorch (CPU) library...." && \
     cpuonly \
     pytorch=${PYTORCH_VERSION} \
     tensorboard \
-    torchaudio && \
+    torchaudio \
     torchvision && \
     echo "===> Installing dependencies using pip...." && \
     ${CONDA_DIR}/condabin/conda run -n ${AI_CONDA_ENV} \

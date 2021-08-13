@@ -187,7 +187,7 @@ RUN echo "===> Installing PyTorch (GPU) library...." && \
     cudatoolkit=${PYTORCH_CUDATOOLKIT_VERSION} \
     pytorch=${PYTORCH_VERSION} \
     tensorboard \
-    torchaudio && \
+    torchaudio \
     torchvision && \
     echo "===> Installing dependencies using pip...." && \
     ${CONDA_DIR}/condabin/conda run -n ${AI_CONDA_ENV} \
