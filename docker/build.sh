@@ -3,6 +3,7 @@
 echo ""
 echo "------------- ENV variables --------------------"
 echo "CORES=${CORES}"
+echo "DOCKER_NO_CACHE=${DOCKER_NO_CACHE}"
 echo "IMAGE_TAG=${IMAGE_TAG}"
 echo "CODE_PKG_VERSION=${CODE_PKG_VERSION}"
 echo "PROJECT_COMPONENT=${PROJECT_COMPONENT}"
@@ -29,7 +30,7 @@ CREATED_DATE="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 REVISION="$(git log -1 --pretty=%H)"
 
 if [[ -e ${DOCKERFILE} ]]; then
-  docker build \
+  docker build ${DOCKER_NO_CACHE} \
     --tag ${IMAGE_NAME}:${IMAGE_TAG} \
     -f ${DOCKERFILE} \
     --build-arg CORES=${CORES} \
