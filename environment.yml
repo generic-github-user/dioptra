@@ -127,7 +127,6 @@ dependencies:
       - rich
       - rq>=1.5.0
       - rstcheck
-      - seed-isort-config
       - snooty
       - snooty-lextudio
       - sphinx-autobuild
@@ -153,6 +152,7 @@ dependencies:
       - types-Jinja2
       - types-python-dateutil
       - types-redis
+      - types-requests
       - types-Werkzeug
       - typing-extensions>=3.7.4.0
       - web-compile
