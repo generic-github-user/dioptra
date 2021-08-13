@@ -31,10 +31,10 @@ on:
 env:
   CODE_PKG_VERSION: 0.0.0
   PROJECT_PREFIX: securing-ai
-  MINICONDA3_PREFIX: Miniconda3-py37_
+  MINICONDA3_PREFIX: Miniconda3-py39_
   MINICONDA_VERSION: 4.10.3
-  PYTORCH_VERSION: 1.7.1
-  TENSORFLOW2_VERSION: 2.1.0
+  PYTORCH_VERSION: 1.9.*
+  TENSORFLOW2_VERSION: 2.4.1
 
 jobs:
   package-code:
@@ -77,6 +77,8 @@ jobs:
           - pytorch-gpu
           - tensorflow2-cpu
           - tensorflow2-gpu
+          - tensorflow21-cpu
+          - tensorflow21-gpu
 
     steps:
       - uses: actions/checkout@v2
