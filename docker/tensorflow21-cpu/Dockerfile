@@ -140,14 +140,14 @@ RUN chown ${AI_UID}:${AI_GID} /etc/${PROJECT_PREFIX}/docker/dot-condarc && \
 USER ${AI_UID}
 
 ARG MINICONDA_VERSION
-ARG MINICONDA3_PREFIX
+ARG MINICONDA3_PY37_PREFIX=Miniconda3-py37_
 ARG PYTHON_VERSION=default
 
 RUN echo "===> Installing Miniconda3 version ${MINICONDA_VERSION} to ${CONDA_DIR}...." && \
     cd /tmp && \
-    wget -qO "/tmp/${MINICONDA3_PREFIX}${MINICONDA_VERSION}-Linux-x86_64.sh" "https://repo.continuum.io/miniconda/${MINICONDA3_PREFIX}${MINICONDA_VERSION}-Linux-x86_64.sh" && \
-    bash ${MINICONDA3_PREFIX}${MINICONDA_VERSION}-Linux-x86_64.sh -f -b -p ${CONDA_DIR} && \
-    rm ${MINICONDA3_PREFIX}${MINICONDA_VERSION}-Linux-x86_64.sh && \
+    wget -qO "/tmp/${MINICONDA3_PY37_PREFIX}${MINICONDA_VERSION}-Linux-x86_64.sh" "https://repo.continuum.io/miniconda/${MINICONDA3_PY37_PREFIX}${MINICONDA_VERSION}-Linux-x86_64.sh" && \
+    bash ${MINICONDA3_PY37_PREFIX}${MINICONDA_VERSION}-Linux-x86_64.sh -f -b -p ${CONDA_DIR} && \
+    rm ${MINICONDA3_PY37_PREFIX}${MINICONDA_VERSION}-Linux-x86_64.sh && \
     if [ ! ${PYTHON_VERSION} = 'default' ]; then ${CONDA_DIR}/condabin/conda install -y python=$PYTHON_VERSION; fi && \
     ${CONDA_DIR}/condabin/conda install -q -y conda && \
     ${CONDA_DIR}/condabin/conda install -q -y pip && \
@@ -156,10 +156,11 @@ RUN echo "===> Installing Miniconda3 version ${MINICONDA_VERSION} to ${CONDA_DIR
     find ${CONDA_DIR} -follow -type f -name '*.a' -delete && \
     find ${CONDA_DIR} -follow -type f -name '*.js.map' -delete && \
     ${CONDA_DIR}/condabin/conda clean -a -f -y && \
+    rm -rf /home/${AI_USER}/.cache/pip && \
     rm -rf /home/${AI_USER}/.cache/yarn && \
     fix-permissions.sh /home/${AI_USER} ${AI_WORKDIR} ${CONDA_DIR}
 
-COPY docker/${PROJECT_COMPONENT}/include/etc/${PROJECT_PREFIX}/docker/environment-worker.yml /etc/${PROJECT_PREFIX}/docker/environment-worker.yml
+COPY docker/${PROJECT_COMPONENT}/include/etc/${PROJECT_PREFIX}/docker/environment-worker-tf21.yml /etc/${PROJECT_PREFIX}/docker/environment-worker.yml
 
 RUN echo "===> Installing base dependencies in conda environment of ${PROJECT_COMPONENT} image...." && \
     cp /etc/${PROJECT_PREFIX}/docker/environment-worker.yml /tmp/environment-worker.yml && \
@@ -169,26 +170,27 @@ RUN echo "===> Installing base dependencies in conda environment of ${PROJECT_CO
     find ${CONDA_DIR} -follow -type f -name '*.a' -delete && \
     find ${CONDA_DIR} -follow -type f -name '*.js.map' -delete && \
     ${CONDA_DIR}/condabin/conda clean -afy && \
-    rm -rf /home/${AI_USER}/.cache/yarn && \
     rm -rf /home/${AI_USER}/.cache/pip && \
+    rm -rf /home/${AI_USER}/.cache/yarn && \
     echo "===> Fixing directory permissions...." && \
     fix-permissions.sh ${CONDA_DIR} ${AI_WORKDIR} /home/${AI_USER}
 
 ARG AI_CONDA_ENV=mitre-securing-ai
-ARG TENSORFLOW2_VERSION
+ARG TENSORFLOW210_BUILD=mkl_py37h80a91df_0
+ARG TENSORFLOW210_VERSION=2.1.0
 
 RUN ${CONDA_DIR}/condabin/conda config --set channel_priority flexible
 
-RUN echo "===> Installing Tensorflow (GPU) library...."; \
+RUN echo "===> Installing Tensorflow (CPU) library...."; \
     ${CONDA_DIR}/condabin/conda install -n ${AI_CONDA_ENV} -q -y \
-    tensorflow-gpu=${TENSORFLOW2_VERSION} \
-    tensorflow-estimator=${TENSORFLOW2_VERSION} && \
+    tensorflow=${TENSORFLOW210_VERSION}=${TENSORFLOW210_BUILD} \
+    tensorflow-estimator=${TENSORFLOW210_VERSION} && \
     echo "===> Cleaning/pruning directories...." && \
     find ${CONDA_DIR} -follow -type f -name '*.a' -delete && \
     find ${CONDA_DIR} -follow -type f -name '*.js.map' -delete && \
     ${CONDA_DIR}/condabin/conda clean -afy && \
-    rm -rf /home/${AI_USER}/.cache/yarn && \
     rm -rf /home/${AI_USER}/.cache/pip && \
+    rm -rf /home/${AI_USER}/.cache/yarn && \
     echo "===> Fixing directory permissions...." && \
     fix-permissions.sh ${CONDA_DIR} ${AI_WORKDIR} /home/${AI_USER}
 
@@ -205,7 +207,6 @@ RUN echo "===> Installing Securing AI code module...." && \
     find ${CONDA_DIR} -follow -type f -name '*.js.map' -delete && \
     ${CONDA_DIR}/condabin/conda clean -afy && \
     rm -rf /home/${AI_USER}/.cache/yarn && \
-    rm -rf /home/${AI_USER}/.cache/pip && \
     echo "===> Fixing directory permissions...." && \
     fix-permissions.sh ${CONDA_DIR} ${AI_WORKDIR} /home/${AI_USER}
 
@@ -249,8 +250,6 @@ ENV AI_RESTAPI_ENV prod
 ENV AI_WORKDIR ${AI_WORKDIR}
 ENV AI_PLUGIN_DIR ${AI_WORKDIR}/plugins
 ENV CONDA_DIR ${CONDA_DIR}
-ENV NVIDIA_VISIBLE_DEVICES all
-ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 
 USER ${AI_UID}
 WORKDIR ${AI_WORKDIR}

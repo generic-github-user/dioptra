@@ -178,36 +178,21 @@ RUN echo "===> Installing base dependencies in conda environment of ${PROJECT_CO
 ARG PYTORCH_VERSION
 
 ARG AI_CONDA_ENV=mitre-securing-ai
-ARG GOOGLE_AUTH_VERSION=1.23.0
-ARG GOOGLE_AUTH_OAUTHLIB_VERSION=0.4.2
-ARG GRPCIO_VERSION=1.31.0
-ARG GRPCIO_BUILD=py37hf8bcb03_0
-ARG PYASN1_VERSION=0.4.8
-ARG PYASN1_MODULES_VERSION=0.2.8
-ARG PYTORCH_BUILD=py3.7_cuda11.0.221_cudnn8.0.5_0
-ARG PYTORCH_CUDATOOLKIT_VERSION=11.0.221
-ARG PYTORCH_LIGHTNING_VERSION=1.1.0
-ARG PYTORCH_TORCHVISION_VERSION=0.8.2
-ARG PYTORCH_TORCHVISION_BUILD=py37_cu110
-ARG TENSORBOARD_VERSION=2.3.0
+ARG PYTORCH_CUDATOOLKIT_VERSION=11.1
 
 RUN ${CONDA_DIR}/condabin/conda config --set channel_priority flexible
 
 RUN echo "===> Installing PyTorch (GPU) library...." && \
-    ${CONDA_DIR}/condabin/conda install -n ${AI_CONDA_ENV} -c defaults -c pytorch -q -y \
+    ${CONDA_DIR}/condabin/conda install -n ${AI_CONDA_ENV} -c defaults -c pytorch -c nvidia -q -y \
     cudatoolkit=${PYTORCH_CUDATOOLKIT_VERSION} \
-    google-auth=${GOOGLE_AUTH_VERSION} \
-    google-auth-oauthlib=${GOOGLE_AUTH_OAUTHLIB_VERSION} \
-    grpcio=${GRPCIO_VERSION}=${GRPCIO_BUILD} \
-    pyasn1=${PYASN1_VERSION} \
-    pyasn1-modules=${PYASN1_MODULES_VERSION} \
-    pytorch=${PYTORCH_VERSION}=${PYTORCH_BUILD} \
-    tensorboard=${TENSORBOARD_VERSION} \
-    torchvision=${PYTORCH_TORCHVISION_VERSION}=${PYTORCH_TORCHVISION_BUILD} && \
+    pytorch=${PYTORCH_VERSION} \
+    tensorboard \
+    torchaudio && \
+    torchvision && \
     echo "===> Installing dependencies using pip...." && \
     ${CONDA_DIR}/condabin/conda run -n ${AI_CONDA_ENV} \
     pip install --no-cache-dir \
-    pytorch-lightning==${PYTORCH_LIGHTNING_VERSION} && \
+    pytorch-lightning && \
     echo "===> Cleaning/pruning directories...." && \
     find ${CONDA_DIR} -follow -type f -name '*.a' -delete && \
     find ${CONDA_DIR} -follow -type f -name '*.js.map' -delete && \
