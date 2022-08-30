@@ -6,11 +6,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Entry Points &#8212; Dioptra 0.0.0 documentation</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -20,40 +22,43 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/securing-ai-testbed.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/dioptra.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script src="../_static/jquery.visible.js"></script>
     <script src="../_static/jquery.leaveNotice-nist.js"></script>
     <script src="../_static/applyLeaveNotice.js"></script>
     <script src="../_static/smoothNavScroll.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Task Plugins" href="task-plugins.html" />
     <link rel="prev" title="The Basics" href="the-basics.html" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
 
     <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
@@ -61,7 +66,21 @@
     <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
     <script async type="text/javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NIST&subagency=github&pua=UA-66610693-1&yt=true&exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c"></script>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -70,10 +89,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
       
       
       <h1 class="site-logo" id="site-title">Dioptra 0.0.0 documentation</h1>
@@ -82,23 +103,24 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    What is Dioptra?
+                </a>
+            </li>
+        </ul>
         <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../index.html">
-   What is Dioptra?
-  </a>
- </li>
-</ul>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../glossary.html">
    Glossary
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Getting Started
  </span>
@@ -115,7 +137,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   User Guide
  </span>
@@ -256,7 +278,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Tutorials and Examples
  </span>
@@ -308,7 +330,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Deployment Guide
  </span>
@@ -345,7 +367,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Developer Guides
  </span>
@@ -384,115 +406,151 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../dev-guide/design-architecture.html">
-   Testbed Architecture Design Guide
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../dev-guide/design-restapi.html">
-   Testbed REST API Design Guide
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../dev-guide/design-sdk.html">
-   Testbed SDK Design Guide
+  <a class="reference internal" href="../dev-guide/restapi.html">
+   REST API Developer’s Guide
   </a>
  </li>
 </ul>
 
     </div>
-</nav>
- <!-- To handle the deprecated key -->
-
-
-
-
-
-<div class="navbar_extra_footer">
-  
-  <div>
-    
-<a href="../developers.html"><em>Development Team</em></a>
-
-  </div>
-  
-  
-</div>
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/user-guide/entry-points.rst.txt"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.rst</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/usnistgov/dioptra"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
         </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/usnistgov/dioptra"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/user-guide/entry-points.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-is-an-entry-point">
    What is an Entry Point?
@@ -527,17 +585,67 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Entry Points</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-an-entry-point">
+   What is an Entry Point?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mlproject-specifications">
+   MLproject Specifications
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#executable-script">
+   Executable Script
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-parameters">
+     Setting Parameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mlflow-tracking-runs">
+     MLFlow - Tracking Runs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prefect-task-execution">
+     Prefect - Task Execution
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="entry-points">
-<span id="user-guide-entry-points"></span><h1>Entry Points<a class="headerlink" href="#entry-points" title="Permalink to this headline">¶</a></h1>
+  <section id="entry-points">
+<span id="user-guide-entry-points"></span><h1>Entry Points<a class="headerlink" href="#entry-points" title="Permalink to this headline">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>See the <a class="reference internal" href="../glossary.html"><span class="doc">Glossary</span></a> for the meaning of the acronyms used in this guide.</p>
@@ -546,10 +654,10 @@
 <p class="admonition-title">Tip</p>
 <p>Instructions for how to create your own entry points are available in the <a class="reference internal" href="custom-entry-points.html"><span class="doc">Creating a New Entry Point guide</span></a>.</p>
 </div>
-<div class="section" id="what-is-an-entry-point">
-<h2>What is an Entry Point?<a class="headerlink" href="#what-is-an-entry-point" title="Permalink to this headline">¶</a></h2>
-<div class="figure align-default">
-<img alt="../_images/entry-point-components.svg" src="../_images/entry-point-components.svg" /></div>
+<section id="what-is-an-entry-point">
+<h2>What is an Entry Point?<a class="headerlink" href="#what-is-an-entry-point" title="Permalink to this headline">#</a></h2>
+<figure class="align-default">
+<img alt="../_images/entry-point-components.svg" src="../_images/entry-point-components.svg" /></figure>
 <p>The term <em>entry point</em>, in the context of running experiment jobs, refers to executable scripts or binaries that are paired with information about their parameters.
 Entry points are the fundamental unit of work within the Testbed, where each job submitted to the Testbed selects one entry point to run.
 Dioptra derives its modularity in part by establishing a convention for how to compose new entry points.
@@ -558,34 +666,34 @@ This guided the construction of all the example experiments distributed as part 
 The <a class="reference internal" href="../glossary.html#term-SDK"><span class="xref std std-term">SDK</span></a> library and the task plugins system are both provided to help Testbed users apply this convention to their own experiments.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This particular usage for the term <em>entry point</em> <a class="reference external" href="https://mlflow.org/docs/latest/projects.html#overview">originates with the MLFlow library</a>, and we have adopted for this project since Dioptra uses <a class="reference external" href="https://mlflow.org">MLFlow</a> on the backend to provide job tracking capabilities.</p>
+<p>This particular usage for the term <em>entry point</em> <a class="reference external" href="https://mlflow.org/docs/latest/projects.html#overview">originates with the MLFlow library</a>, and we have adopted it for this project since Dioptra uses <a class="reference external" href="https://mlflow.org">MLFlow</a> on the backend to provide job tracking capabilities.</p>
 </div>
-<p>Each implementation of a Testbed entry point requires, at minimum, two separate files, a <a class="reference internal" href="../glossary.html#term-YAML"><span class="xref std std-term">YAML</span></a> formatted <code class="docutils literal notranslate"><span class="pre">MLproject</span></code> file, and an executable Python script that can set its internal parameters via command-line options (e.g. <a class="reference external" href="https://docs.python.org/3/library/argparse.html#module-argparse" title="(in Python v3.9)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">argparse</span></code></a> and <a class="reference external" href="https://click.palletsprojects.com/en/7.x/api/#module-click" title="(in Click v7.x)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">click</span></code></a>).
+<p>Each implementation of a Testbed entry point requires, at minimum, two separate files, a <a class="reference internal" href="../glossary.html#term-YAML"><span class="xref std std-term">YAML</span></a> formatted <code class="docutils literal notranslate"><span class="pre">MLproject</span></code> file, and an executable Python script that can set its internal parameters via command-line options (e.g. <a class="reference external" href="https://docs.python.org/3/library/argparse.html#module-argparse" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">argparse</span></code></a> and <a class="reference external" href="https://click.palletsprojects.com/en/8.1.x/api/#module-click" title="(in Click v8.1.x)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">click</span></code></a>).
 These files are the topics of the following sections.</p>
-</div>
-<div class="section" id="mlproject-specifications">
-<h2>MLproject Specifications<a class="headerlink" href="#mlproject-specifications" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="mlproject-specifications">
+<h2>MLproject Specifications<a class="headerlink" href="#mlproject-specifications" title="Permalink to this headline">#</a></h2>
 <p>As was mentioned before, the <code class="docutils literal notranslate"><span class="pre">MLproject</span></code> file is a plain text file in <a class="reference internal" href="../glossary.html#term-YAML"><span class="xref std std-term">YAML</span></a> syntax that declares an entry point’s executable command and its available parameters.
 An example of an <code class="docutils literal notranslate"><span class="pre">MLproject</span></code> file is below,</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">My Project</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">My Project</span><span class="w"></span>
 
-<span class="nt">entry_points</span><span class="p">:</span>
-  <span class="nt">train</span><span class="p">:</span>
-    <span class="nt">parameters</span><span class="p">:</span>
-      <span class="nt">data_dir</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="nv">path</span><span class="p p-Indicator">,</span><span class="nt"> default</span><span class="p">:</span> <span class="s">&quot;/nfs/data&quot;</span> <span class="p p-Indicator">}</span>
-      <span class="nt">image_size</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="nv">string</span><span class="p p-Indicator">,</span><span class="nt"> default</span><span class="p">:</span> <span class="s">&quot;28,28,1&quot;</span> <span class="p p-Indicator">}</span>
-    <span class="nt">command</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
-      <span class="no">python src/train.py</span>
-      <span class="no">--data-dir {data_dir}</span>
-      <span class="no">--image-size {image_size}</span>
-  <span class="nt">infer</span><span class="p">:</span>
-    <span class="nt">parameters</span><span class="p">:</span>
-      <span class="nt">run_id</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="nv">string</span> <span class="p p-Indicator">}</span>
-      <span class="nt">image_size</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="nv">string</span><span class="p p-Indicator">,</span><span class="nt"> default</span><span class="p">:</span> <span class="s">&quot;28,28,1&quot;</span> <span class="p p-Indicator">}</span>
-    <span class="nt">command</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
-      <span class="no">python src/infer.py</span>
-      <span class="no">--run-id {run_id}</span>
-      <span class="no">--image-size {image_size}</span>
+<span class="nt">entry_points</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">train</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">data_dir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span><span class="w"> </span><span class="nv">path</span><span class="p p-Indicator">,</span><span class="nt"> default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/nfs/data&quot;</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"></span>
+<span class="w">      </span><span class="nt">image_size</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span><span class="w"> </span><span class="nv">string</span><span class="p p-Indicator">,</span><span class="nt"> default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;28,28,1&quot;</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"></span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span><span class="w"></span>
+<span class="w">      </span><span class="no">python src/train.py</span><span class="w"></span>
+<span class="w">      </span><span class="no">--data-dir {data_dir}</span><span class="w"></span>
+<span class="w">      </span><span class="no">--image-size {image_size}</span><span class="w"></span>
+<span class="w">  </span><span class="nt">infer</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">run_id</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span><span class="w"> </span><span class="nv">string</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"></span>
+<span class="w">      </span><span class="nt">image_size</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span><span class="w"> </span><span class="nv">string</span><span class="p p-Indicator">,</span><span class="nt"> default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;28,28,1&quot;</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"></span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span><span class="w"></span>
+<span class="w">      </span><span class="no">python src/infer.py</span><span class="w"></span>
+<span class="w">      </span><span class="no">--run-id {run_id}</span><span class="w"></span>
+<span class="w">      </span><span class="no">--image-size {image_size}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>As we can see, there are two entry points in this <code class="docutils literal notranslate"><span class="pre">MLproject</span></code> file, <cite>train</cite> and <cite>infer</cite>.
@@ -595,18 +703,18 @@ If we submit a job that selects the <cite>train</cite> entry point and use its d
 </div>
 <p>Users should note that each of the declared parameters must specify a data type.
 You can specify just the data type by writing the following in your <code class="docutils literal notranslate"><span class="pre">MLproject</span></code> file,</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">parameter_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">data_type</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">parameter_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_type</span><span class="w"></span>
 </pre></div>
 </div>
 <p>A default value, in contrast, is not required, but users are encouraged to try and provide one wherever possible.
 There are two equivalent ways to specify both a data type and a default value in the <code class="docutils literal notranslate"><span class="pre">MLproject</span></code> file,</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Short syntax</span>
-<span class="nt">parameter_name</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt">type</span><span class="p">:</span> <span class="nv">data_type</span><span class="p p-Indicator">,</span><span class="nt"> default</span><span class="p">:</span> <span class="nv">value</span><span class="p p-Indicator">}</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Short syntax</span><span class="w"></span>
+<span class="nt">parameter_name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="nv">data_type</span><span class="p p-Indicator">,</span><span class="nt"> default</span><span class="p">:</span><span class="w"> </span><span class="nv">value</span><span class="p p-Indicator">}</span><span class="w"></span>
 
-<span class="c1"># Long syntax</span>
-<span class="nt">parameter_name</span><span class="p">:</span>
-  <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">data_type</span>
-  <span class="nt">default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">value</span>
+<span class="c1"># Long syntax</span><span class="w"></span>
+<span class="nt">parameter_name</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_type</span><span class="w"></span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">MLproject</span></code> file supports four parameter types, some of which are handled in a special way (for example, the <cite>path</cite> data type will download certain files to local storage).
@@ -625,29 +733,29 @@ Use this type for programs that can only read local files.</p>
 </dd>
 <dt>uri</dt><dd><p>A <a class="reference internal" href="../glossary.html#term-URI"><span class="xref std std-term">URI</span></a> for data either in a local or distributed storage system.
 Relative paths are converted to absolute paths, as in the <cite>path</cite> type.
-Use this type for programs that know how to read from distributed storage (e.g., programs that use the <a class="reference external" href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/boto3.html#module-boto3" title="(in Boto3 Docs v1.18.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">boto3</span></code></a> package to directly access S3 storage).</p>
+Use this type for programs that know how to read from distributed storage (e.g., programs that use the <a class="reference external" href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/boto3.html#module-boto3" title="(in Boto3 Docs v1.24.61)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">boto3</span></code></a> package to directly access S3 storage).</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="executable-script">
-<h2>Executable Script<a class="headerlink" href="#executable-script" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="executable-script">
+<h2>Executable Script<a class="headerlink" href="#executable-script" title="Permalink to this headline">#</a></h2>
 <p>The entry point script, in principle, is just an executable Python script that accepts command-line options, so Testbed users can get started quickly by using their pre-existing Python scripts.
 However, if users wish to make use of the Testbed’s powerful job tracking and task plugin capabilities, they will need to adopt the Testbed’s standard for writing entry point scripts outlined in this section.</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>The Testbed <a class="reference internal" href="../glossary.html#term-SDK"><span class="xref std std-term">SDK</span></a>, in a planned future release, will be extending the <code class="docutils literal notranslate"><span class="pre">MLproject</span></code> specification to facilitate the templated generation of entry point scripts.
-Users will have an easier to migrating their scripts to this new approach if they follow the Testbed’s standard for entry point scripts when <a class="reference internal" href="custom-entry-points.html"><span class="doc">creating their own entry points</span></a>.</p>
+Users will have an easier time migrating their scripts to this new approach if they follow the Testbed’s standard for entry point scripts when <a class="reference internal" href="custom-entry-points.html"><span class="doc">creating their own entry points</span></a>.</p>
 </div>
-<div class="section" id="setting-parameters">
-<h3>Setting Parameters<a class="headerlink" href="#setting-parameters" title="Permalink to this headline">¶</a></h3>
-<p>The <a class="reference external" href="https://click.palletsprojects.com/en/7.x/api/#module-click" title="(in Click v7.x)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">click</span></code></a> library should be used to create command-line interfaces for their Python scripts and to convert data types that aren’t supported by the <code class="docutils literal notranslate"><span class="pre">MLproject</span></code> file (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a> and <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>, for instance).
+<section id="setting-parameters">
+<h3>Setting Parameters<a class="headerlink" href="#setting-parameters" title="Permalink to this headline">#</a></h3>
+<p>The <a class="reference external" href="https://click.palletsprojects.com/en/8.1.x/api/#module-click" title="(in Click v8.1.x)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">click</span></code></a> library should be used to create command-line interfaces for their Python scripts and to convert data types that aren’t supported by the <code class="docutils literal notranslate"><span class="pre">MLproject</span></code> file (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a> and <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>, for instance).
 The following is a short example based on the <cite>train</cite> entry point from the <code class="docutils literal notranslate"><span class="pre">MLproject</span></code> examples we considered earlier in this guide,</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># src/train.py</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">click</span>
-<span class="kn">from</span> <span class="nn">mitre.securingai.sdk.utilities.contexts</span> <span class="kn">import</span> <span class="n">plugin_dirs</span>
-<span class="kn">from</span> <span class="nn">mitre.securingai.sdk.utilities.logging</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span> <span class="nn">dioptra.sdk.utilities.contexts</span> <span class="kn">import</span> <span class="n">plugin_dirs</span>
+<span class="kn">from</span> <span class="nn">dioptra.sdk.utilities.logging</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">StderrLogStream</span><span class="p">,</span>
     <span class="n">StdoutLogStream</span><span class="p">,</span>
     <span class="n">attach_stdout_stream_handler</span><span class="p">,</span>
@@ -679,8 +787,8 @@ The following is a short example based on the <cite>train</cite> entry point fro
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">log_level</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;AI_JOB_LOG_LEVEL&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span><span class="p">)</span>
-    <span class="n">as_json</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;AI_JOB_LOG_AS_JSON&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">False</span>
+    <span class="n">log_level</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DIOPTRA_JOB_LOG_LEVEL&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span><span class="p">)</span>
+    <span class="n">as_json</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DIOPTRA_JOB_LOG_AS_JSON&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">False</span>
 
     <span class="n">clear_logger_handlers</span><span class="p">(</span><span class="n">get_prefect_logger</span><span class="p">())</span>
     <span class="n">attach_stdout_stream_handler</span><span class="p">(</span><span class="n">as_json</span><span class="p">)</span>
@@ -692,7 +800,7 @@ The following is a short example based on the <cite>train</cite> entry point fro
 </pre></div>
 </div>
 <p>Here, Click is validating our inputs by checking if <code class="docutils literal notranslate"><span class="pre">--image-size</span></code> is passed a string and if <code class="docutils literal notranslate"><span class="pre">--data-dir</span></code> points to a directory that exists and is readable.
-We also define a callback function for <code class="docutils literal notranslate"><span class="pre">--image-size</span></code> that will convert a string of comma-separated integers into a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>, i.e. transform <code class="docutils literal notranslate"><span class="pre">&quot;28,28,1&quot;</span></code> into <code class="docutils literal notranslate"><span class="pre">(28,</span> <span class="pre">28,</span> <span class="pre">1)</span></code>.
+We also define a callback function for <code class="docutils literal notranslate"><span class="pre">--image-size</span></code> that will convert a string of comma-separated integers into a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>, i.e. transform <code class="docutils literal notranslate"><span class="pre">&quot;28,28,1&quot;</span></code> into <code class="docutils literal notranslate"><span class="pre">(28,</span> <span class="pre">28,</span> <span class="pre">1)</span></code>.
 The code underneath the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> block at the end ensures that the <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">src/train.py</span></code> command specified in the <code class="docutils literal notranslate"><span class="pre">MLproject</span></code> file will call the <code class="docutils literal notranslate"><span class="pre">train()</span></code> function and use the values passed via the <code class="docutils literal notranslate"><span class="pre">--data-dir</span></code> and <code class="docutils literal notranslate"><span class="pre">--image-size</span></code> command-line options.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -700,12 +808,12 @@ The code underneath the <code class="docutils literal notranslate"><span class="
 </div>
 <p>This small example only scratches the surface of what Click can do.
 Testbed users are encouraged to peruse the Click documentation to learn more about its features: <a class="reference external" href="https://click.palletsprojects.com/en/7.x/">https://click.palletsprojects.com/en/7.x/</a></p>
-</div>
-<div class="section" id="mlflow-tracking-runs">
-<h3>MLFlow - Tracking Runs<a class="headerlink" href="#mlflow-tracking-runs" title="Permalink to this headline">¶</a></h3>
-<p>Every entry point script needs to invoke <a class="reference external" href="https://mlflow.org/docs/latest/python_api/mlflow.html#mlflow.start_run" title="(in MLflow v1.19.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">mlflow.start_run()</span></code></a> to create an active run context for MLFlow and it should be done near the top of their entry point function.
+</section>
+<section id="mlflow-tracking-runs">
+<h3>MLFlow - Tracking Runs<a class="headerlink" href="#mlflow-tracking-runs" title="Permalink to this headline">#</a></h3>
+<p>Every entry point script needs to invoke <a class="reference external" href="https://mlflow.org/docs/latest/python_api/mlflow.html#mlflow.start_run" title="(in MLflow v1.28.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">mlflow.start_run()</span></code></a> to create an active run context for MLFlow and it should be done near the top of their entry point function.
 This context is needed when logging results and artifacts to the MLFlow Tracking service.
-The following example shows how this context would be started in the <code class="docutils literal notranslate"><span class="pre">train()</span></code> function from the previous section,</p>
+The following example shows how this context would be started in the <code class="docutils literal notranslate"><span class="pre">train()</span></code> function from the previous section.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mlflow</span>
 
 <span class="c1"># Truncated...</span>
@@ -721,20 +829,20 @@ The following example shows how this context would be started in the <code class
     <span class="k">return</span> <span class="n">state</span>
 </pre></div>
 </div>
-<p>Within this context block, the <code class="docutils literal notranslate"><span class="pre">active_run</span></code> variable will contain a <a class="reference external" href="https://mlflow.org/docs/latest/python_api/mlflow.entities.html#mlflow.entities.Run" title="(in MLflow v1.19.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlflow.entities.Run</span></code></a> object that provides metadata about the run that is useful to have available.
-MLFlow functions like <a class="reference external" href="https://mlflow.org/docs/latest/python_api/mlflow.html#mlflow.log_param" title="(in MLflow v1.19.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">mlflow.log_param()</span></code></a>, <a class="reference external" href="https://mlflow.org/docs/latest/python_api/mlflow.html#mlflow.log_metric" title="(in MLflow v1.19.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">mlflow.log_metric()</span></code></a>, and <a class="reference external" href="https://mlflow.org/docs/latest/python_api/mlflow.html#mlflow.log_artifact" title="(in MLflow v1.19.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">mlflow.log_artifact()</span></code></a> will be able to infer the current run automatically and be able to log their data to the appropriate place.
+<p>Within this context block, the <code class="docutils literal notranslate"><span class="pre">active_run</span></code> variable will contain a <a class="reference external" href="https://mlflow.org/docs/latest/python_api/mlflow.entities.html#mlflow.entities.Run" title="(in MLflow v1.28.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlflow.entities.Run</span></code></a> object that provides metadata about the run that is useful to have available.
+MLFlow functions like <a class="reference external" href="https://mlflow.org/docs/latest/python_api/mlflow.html#mlflow.log_param" title="(in MLflow v1.28.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">mlflow.log_param()</span></code></a>, <a class="reference external" href="https://mlflow.org/docs/latest/python_api/mlflow.html#mlflow.log_metric" title="(in MLflow v1.28.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">mlflow.log_metric()</span></code></a>, and <a class="reference external" href="https://mlflow.org/docs/latest/python_api/mlflow.html#mlflow.log_artifact" title="(in MLflow v1.28.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">mlflow.log_artifact()</span></code></a> will be able to infer the current run automatically and be able to log their data to the appropriate place.
 Please note that the <code class="docutils literal notranslate"><span class="pre">init_flow()</span></code> function is <a class="reference internal" href="#entry-points-prefect-task-execution"><span class="std std-ref">introduced in the following section</span></a>.</p>
-<p>Testbed users are encouraged to peruse the MLflow Tracking documentation to learn more about the tracking context and the kinds of things you can do when its active: <a class="reference external" href="https://mlflow.org/docs/latest/tracking.html">https://mlflow.org/docs/latest/tracking.html</a>.</p>
-</div>
-<div class="section" id="prefect-task-execution">
-<span id="entry-points-prefect-task-execution"></span><h3>Prefect - Task Execution<a class="headerlink" href="#prefect-task-execution" title="Permalink to this headline">¶</a></h3>
+<p>Testbed users are encouraged to peruse the MLflow Tracking documentation to learn more about the tracking context and the kinds of things you can do when it’s active: <a class="reference external" href="https://mlflow.org/docs/latest/tracking.html">https://mlflow.org/docs/latest/tracking.html</a>.</p>
+</section>
+<section id="prefect-task-execution">
+<span id="entry-points-prefect-task-execution"></span><h3>Prefect - Task Execution<a class="headerlink" href="#prefect-task-execution" title="Permalink to this headline">#</a></h3>
 <p>The main work done within an entry point needs to use the <code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code> class from the <a class="reference external" href="https://www.prefect.io">Prefect</a> library to create a context for assembling the entry point script’s task workflow.
 Prefect is a modern workflow library that is aimed at helping data scientists set up task execution graphs with minimal changes to their existing code, and in Dioptra it provides a framework for wiring <a class="reference internal" href="task-plugins.html"><span class="doc">task plugins</span></a> together.
 The following example shows the beginnings of a <code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code> context to be run by the <code class="docutils literal notranslate"><span class="pre">train()</span></code> function in the previous section.</p>
 <div class="highlight-python notranslate" id="entry-points-prefect-task-execution-code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prefect</span> <span class="kn">import</span> <span class="n">Flow</span><span class="p">,</span> <span class="n">Parameter</span>
-<span class="kn">from</span> <span class="nn">mitre.securingai</span> <span class="kn">import</span> <span class="n">pyplugs</span>
+<span class="kn">from</span> <span class="nn">dioptra</span> <span class="kn">import</span> <span class="n">pyplugs</span>
 
-<span class="n">_PLUGINS_IMPORT_PATH</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;securingai_builtins&quot;</span>
+<span class="n">_PLUGINS_IMPORT_PATH</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;dioptra_builtins&quot;</span>
 
 
 <span class="k">def</span> <span class="nf">init_flow</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Flow</span><span class="p">:</span>
@@ -751,48 +859,55 @@ The following example shows the beginnings of a <code class="xref py py-class do
 </pre></div>
 </div>
 <p>This example illustrates the requirement that all the input parameters for an entry point need to be declared as such using the <code class="xref py py-class docutils literal notranslate"><span class="pre">prefect.Parameter</span></code> class.
-It also introduces us to our first task plugin call with <a class="reference internal" href="api-sdk/api-pyplugs.html#mitre.securingai.pyplugs.call_task" title="mitre.securingai.pyplugs.call_task"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyplugs.call_task()</span></code></a>.
-The anatomy of this call will be discussed in the <a class="reference internal" href="task-plugins.html"><span class="doc">next section of the user guide</span></a>, so for now, users just need to know that this is how task plugins are used within the Testbed, and that the Testbed standard is to have <strong>all</strong> function calls within the <code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code> context be invocations of <a class="reference internal" href="api-sdk/api-pyplugs.html#mitre.securingai.pyplugs.call_task" title="mitre.securingai.pyplugs.call_task"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyplugs.call_task()</span></code></a>.</p>
-</div>
-</div>
-</div>
+It also introduces us to our first task plugin call with <a class="reference internal" href="api-sdk/api-pyplugs.html#dioptra.pyplugs.call_task" title="dioptra.pyplugs.call_task"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyplugs.call_task()</span></code></a>.
+The anatomy of this call will be discussed in the <a class="reference internal" href="task-plugins.html"><span class="doc">next section of the user guide</span></a>, so for now, users just need to know that this is how task plugins are used within the Testbed, and that the Testbed standard is to have <strong>all</strong> function calls within the <code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code> context be invocations of <a class="reference internal" href="api-sdk/api-pyplugs.html#dioptra.pyplugs.call_task" title="dioptra.pyplugs.call_task"><code class="xref py py-func docutils literal notranslate"><span class="pre">pyplugs.call_task()</span></code></a>.</p>
+</section>
+</section>
+</section>
 
 
               </div>
               
-        
-        <div class='prev-next-bottom'>
-            
-    <a class='left-prev' id="prev-link" href="the-basics.html" title="previous page">The Basics</a>
-    <a class='right-next' id="next-link" href="task-plugins.html" title="next page">Task Plugins</a>
-
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="the-basics.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">The Basics</p>
         </div>
-        
+    </a>
+    <a class='right-next' id="next-link" href="task-plugins.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Task Plugins</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+      &copy; Copyright .<br/>
+</p>
+        </footer>
     </div>
     
-<footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-        <div class="disclaimer">
-          <strong>Disclaimer:</strong> Certain commercial equipment, instruments, or
-          materials are identified in this documentation to foster understanding. Such
-          identification does not imply recommendation or endorsement by the National
-          Institute of Standards and Technology, nor does it imply that the materials
-          or equipment identified are necessarily the best available for the purpose.
-        </div>
-      </p>
-    </div>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
+
   </body>
 </html>
